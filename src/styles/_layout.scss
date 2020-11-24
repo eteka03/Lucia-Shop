@@ -1,0 +1,88 @@
+/* les variables du site */
+
+/*----------------*/
+/*--- FONT -------*/
+/*----------------*/
+body {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+/*----------------*/
+/*--- DIMENSIONS -------*/
+/*----------------*/
+
+.conteneur {
+  &_large {
+    padding: 0 60px;
+    width: 100%;
+    .menuPrincipal {
+      padding: 0.5rem 0px;
+    }
+    &.row {
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+  }
+}
+
+div {
+  & .small {
+    width: 300px;
+    height: 200px;
+  }
+
+  & .medium {
+    width: 500px;
+    height: 400px;
+  }
+
+  & .large {
+    width: 700px;
+    height: 500px;
+  }
+}
+
+/*----------------*/
+/*--- COULEURS -------*/
+/*----------------*/
+
+$violet1: #3700b3;
+$violet2: #6200ee;
+$noir: #000000;
+$blanc: #ffffff;
+$vert1: #03dac6;
+$vert2: #018786;
+
+:root {
+  --color-violet1: $violet1;
+  --color-violet2: $violet2;
+  --color-noir: $noir;
+  --color-blanc: $blanc;
+  --color-vert1: $vert1;
+  --color-vert2: $vert2;
+  --marginTop1: 60px;
+}
+
+.layout {
+  padding: 0;
+  width: 100%;
+  color: $noir;
+}
+
+/*----------------*/
+/*--- titre -------*/
+/*----------------*/
+.titre1 {
+}
+
+.titre2 {
+}
+
+.titre3 {
+}
+.titre4 {
+}
+.titre5 {
+}
+
+.lien {
+}
