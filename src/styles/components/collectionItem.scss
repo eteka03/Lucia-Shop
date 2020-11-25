@@ -1,0 +1,25 @@
+.collection {
+  &_item {
+    height: 350px;
+    .image {
+      height: 90%;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .infos {
+      height: 10%;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      span {
+        font-size: 18px;
+      }
+      .name {
+        width: 90%;
+      }
+    }
+    margin-bottom: 15px;
+  }
+}

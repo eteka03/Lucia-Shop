@@ -7,6 +7,7 @@ const fakeCategorieData = [
     titre: "femme",
     imageUrl: "https://source.unsplash.com/random/400x600?sig=1",
     lienCategorie: "/",
+    lienUrl: "femme",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const fakeCategorieData = [
     imageUrl: "https://source.unsplash.com/random/400x600?sig=2",
     lienCategorie: "/",
     size: "small",
+    lienUrl: "homme",
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const fakeCategorieData = [
     imageUrl: "https://source.unsplash.com/random/400x600?sig=3",
     lienCategorie: "/",
     size: "small",
+    lienUrl: "enfant",
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ const fakeCategorieData = [
     imageUrl: "https://source.unsplash.com/random/400x600?sig=4",
     lienCategorie: "/",
     size: "small",
+    lienUrl: "chaussure",
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ const fakeCategorieData = [
     imageUrl: "https://source.unsplash.com/random/400x600?sig=5",
     lienCategorie: "/",
     size: "medium",
+    lienUrl: "pantalons",
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ const fakeCategorieData = [
     imageUrl: "https://source.unsplash.com/random/400x600?sig=6",
     lienCategorie: "/",
     size: "medium",
+    lienUrl: "accessoires",
   },
 ];
 

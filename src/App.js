@@ -1,15 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout";
 import Accueil from "./pages/Accueil";
+import PageShop from "./pages/PageShop";
 
 export const Store = React.createContext();
 
 export default function App() {
   return (
     <Store.Provider>
-      <Layout>
-        <Accueil />
-      </Layout>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Accueil} />
+            <Route path="/shop" component={PageShop} />
+          </Switch>
+        </Layout>
+      </Router>
     </Store.Provider>
   );
 }
+
+const Pantalon = () => {
+  return <div>pantalon</div>;
+};

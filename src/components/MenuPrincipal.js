@@ -26,7 +26,7 @@ const Example = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="" navbar>
           <NavItem className="menu_item">
-            <NavLink className="menu_link" href="/components/">
+            <NavLink className="menu_link" href="/shop">
               Shop
             </NavLink>
           </NavItem>
