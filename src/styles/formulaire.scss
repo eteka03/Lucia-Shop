@@ -1,0 +1,43 @@
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2rem;
+
+  label {
+    font-size: 16px;
+    text-align: left;
+    font-family: sans-serif;
+  }
+
+  input {
+    border: none;
+    border-bottom-style: solid;
+    border-width: 0.5px;
+    font-family: sans-serif;
+    &:focus {
+      background-color: var(--color-vert1);
+      outline: none;
+    }
+  }
+  input[type="submit"] {
+    border: solid;
+    border-width: 0.5px;
+    text-transform: uppercase;
+    padding: 10px 0px;
+    background-color: var(--color-vert2);
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2rem;
+    &:focus {
+      border: 3px solid var(--color-vert1);
+    }
+    &:hover {
+      background-color: var(--color-vert1);
+    }
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+}

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout";
 import Accueil from "./pages/Accueil";
 import PageShop from "./pages/PageShop";
+import PageSignInSignUp from "./pages/PageSignInSignUp";
 
 export const Store = React.createContext();
 
@@ -14,6 +15,7 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Accueil} />
             <Route path="/shop" component={PageShop} />
+            <Route path="/signin" component={PageSignInSignUp} />
           </Switch>
         </Layout>
       </Router>

@@ -36,8 +36,8 @@ const Example = () => {
             </NavLink>
           </NavItem>
           <NavItem className="menu_item">
-            <NavLink className="menu_link" href="/components/">
-              Signin
+            <NavLink className="menu_link" href="/signin">
+              Sign in
             </NavLink>
           </NavItem>
         </Nav>
