@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { App_datas } from "../App";
 
 import {
   Collapse,
@@ -9,9 +10,12 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { auth } from "../firebase/firebase.utils";
 
-const Example = () => {
+const MenuPrincipal = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { user } = useContext(App_datas);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -36,9 +40,15 @@ const Example = () => {
             </NavLink>
           </NavItem>
           <NavItem className="menu_item">
-            <NavLink className="menu_link" href="/signin">
-              Sign in
-            </NavLink>
+            {user ? (
+              <NavLink className="menu_link" onClick={() => auth.signOut()}>
+                Sign out
+              </NavLink>
+            ) : (
+              <NavLink className="menu_link" href="/signin">
+                Sign in
+              </NavLink>
+            )}
           </NavItem>
         </Nav>
       </Collapse>
@@ -46,4 +56,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default MenuPrincipal;

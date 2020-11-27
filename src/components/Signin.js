@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FormGroup } from "reactstrap";
 import "../styles/formulaire.scss";
+import CustomButton from "./CustomButton";
+import { signInWithGoogle } from "../firebase/firebase.utils";
 
 const Signin = () => {
   const [userInfo, setUserInfos] = useState({ email: "", password: "" });
@@ -30,7 +32,12 @@ const Signin = () => {
           required
         />
       </FormGroup>
-      <input type="submit" value="Sign In" />
+      <FormGroup>
+        <CustomButton type="submit">Sign In</CustomButton>
+        <CustomButton onClick={signInWithGoogle} isGoogleSignIn type="button">
+          Sign In with Google
+        </CustomButton>
+      </FormGroup>
     </form>
   );
 };

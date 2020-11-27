@@ -9,7 +9,9 @@ body {
 /*----------------*/
 /*--- DIMENSIONS -------*/
 /*----------------*/
-
+* {
+  box-sizing: border-box;
+}
 .conteneur {
   &_large {
     padding: 0 60px;

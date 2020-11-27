@@ -1,0 +1,27 @@
+button {
+  border: solid;
+  border-width: 0.5px;
+  text-transform: uppercase;
+  padding: 10px 0px;
+  background-color: var(--color-vert2);
+  font-size: 18px !important;
+  font-weight: 700;
+  margin-top: 2rem !important;
+  &:focus {
+    border: 3px solid var(--color-vert1);
+  }
+  &:hover {
+    background-color: var(--color-vert1);
+  }
+}
+
+.custom-button {
+  &.googleSignIn {
+    background-color: #4285f4;
+    color: white;
+
+    &:hover {
+      background-color: #357ae8;
+    }
+  }
+}
