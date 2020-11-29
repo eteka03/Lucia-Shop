@@ -4,29 +4,47 @@ import Layout from "./components/Layout";
 import Accueil from "./pages/Accueil";
 import PageShop from "./pages/PageShop";
 import PageSignInSignUp from "./pages/PageSignInSignUp";
-import { auth } from "../src/firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+} from "../src/firebase/firebase.utils";
 
 export const App_datas = React.createContext({
   user: {},
 });
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({});
-
-  const unsubscribeFromAuth = auth.onAuthStateChanged(function (user) {
-    // handle it
-  });
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      console.log("log1", user);
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      //vérifier si il y'a un utilisateur authentifié
+      if (userAuth) {
+        //creer ou recuperer l'utilisateur dans la bd
+        const userRef = await createUserProfileDocument(userAuth);
+
+        //recupérer utlisateur dans le state de l'application
+        userRef.onSnapshot((snapshot) => {
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data(),
+          });
+        });
+      } else {
+        //si personne n'est authentifié
+        setCurrentUser(null);
+      }
     });
+
     return () => {
+      //se desinscrire du listener de firebase quand l'app est démontée
       unsubscribeFromAuth();
     };
   }, []);
 
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
   return (
     <App_datas.Provider value={{ ...App_datas, user: currentUser }}>
       <Router>
