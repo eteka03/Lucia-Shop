@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import { App_datas } from "../App";
+import React, { useState } from "react";
 
+import { connect } from "react-redux";
 import {
   Collapse,
   Navbar,
@@ -12,10 +12,8 @@ import {
 } from "reactstrap";
 import { auth } from "../firebase/firebase.utils";
 
-const MenuPrincipal = () => {
+const MenuPrincipal = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const { user } = useContext(App_datas);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -40,7 +38,7 @@ const MenuPrincipal = () => {
             </NavLink>
           </NavItem>
           <NavItem className="menu_item">
-            {user ? (
+            {Object.keys(currentUser).length !== 0 ? (
               <NavLink className="menu_link" onClick={() => auth.signOut()}>
                 Sign out
               </NavLink>
@@ -56,4 +54,7 @@ const MenuPrincipal = () => {
   );
 };
 
-export default MenuPrincipal;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+export default connect(mapStateToProps)(MenuPrincipal);

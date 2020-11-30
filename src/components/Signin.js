@@ -6,22 +6,32 @@ import { auth, signInWithGoogle } from "../firebase/firebase.utils";
 
 const Signin = () => {
   const [userInfo, setUserInfos] = useState({ email: "", password: "" });
-
+  const [erreur, setErreur] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = userInfo;
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setUserInfos({});
-    } catch (error) {}
+      await auth.signInWithEmailAndPassword(email, password).then((user) => {
+        setErreur(false);
+        setUserInfos({});
+      });
+    } catch (error) {
+      if (error.code) {
+        setErreur(true);
+      }
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInfos({ ...userInfo, [name]: value });
   };
   return (
-    <form className="formulaire signin" onSubmit={handleSubmit}>
+    <form
+      className={`formulaire signin ${erreur && "error"}`}
+      onSubmit={handleSubmit}
+    >
+      {erreur && <span>invalid email or password</span>}
       <FormGroup>
         <label htmlFor="email">Email</label>
         <input
