@@ -43,7 +43,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log(currentUser);
+    console.log("connecté", currentUser);
   }, [currentUser]);
   return (
     <App_datas.Provider value={{ ...App_datas, user: currentUser }}>

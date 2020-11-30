@@ -7,12 +7,14 @@ const PageSignInSignUp = () => {
   return (
     <div className="page_login conteneur_large">
       <div className="_container signIn">
-        <h5 className="">I already have an account</h5>
+        <h3 className="">I already have an account</h3>
+        <p>Sign in with e-mail and password</p>
         <Signin />
       </div>
 
       <div className="_container signUp">
-        <h5>Sign up with e-mail and password</h5>
+        <h3>I do not have an account</h3>
+        <p>Sign in with e-mail and password</p>
         <SignUp />
       </div>
     </div>
