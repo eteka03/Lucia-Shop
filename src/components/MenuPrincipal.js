@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   Collapse,
@@ -14,7 +14,7 @@ import { auth } from "../firebase/firebase.utils";
 
 const MenuPrincipal = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const history = useHistory();
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -38,12 +38,15 @@ const MenuPrincipal = ({ currentUser }) => {
             </NavLink>
           </NavItem>
           <NavItem className="menu_item">
-            {Object.keys(currentUser).length !== 0 ? (
+            {currentUser ? (
               <NavLink className="menu_link" onClick={() => auth.signOut()}>
                 Sign out
               </NavLink>
             ) : (
-              <NavLink className="menu_link" href="/signin">
+              <NavLink
+                className="menu_link"
+                onClick={() => history.push("/signin")}
+              >
                 Sign in
               </NavLink>
             )}
@@ -57,4 +60,4 @@ const MenuPrincipal = ({ currentUser }) => {
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
-export default connect(mapStateToProps)(MenuPrincipal);
+export default connect(mapStateToProps, null)(MenuPrincipal);

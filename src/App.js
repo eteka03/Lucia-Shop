@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import Accueil from "./pages/Accueil";
 import PageShop from "./pages/PageShop";
@@ -11,7 +16,7 @@ import {
 } from "../src/firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.action";
 
-function App({ setCurrentUser }) {
+function App({ setCurrentUser, currentUser }) {
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       //vérifier si il y'a un utilisateur authentifié
@@ -28,7 +33,7 @@ function App({ setCurrentUser }) {
         });
       } else {
         //si personne n'est authentifié
-        setCurrentUser({});
+        setCurrentUser(userAuth);
       }
     });
 
@@ -44,7 +49,12 @@ function App({ setCurrentUser }) {
         <Switch>
           <Route exact path="/" component={Accueil} />
           <Route path="/shop" component={PageShop} />
-          <Route path="/signin" component={PageSignInSignUp} />
+          <Route
+            path="/signin"
+            render={() =>
+              currentUser ? <Redirect to="/" /> : <PageSignInSignUp />
+            }
+          />
           <Route path="/signout" component={Accueil} />
         </Switch>
       </Layout>
@@ -52,7 +62,10 @@ function App({ setCurrentUser }) {
   );
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

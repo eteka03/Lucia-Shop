@@ -1,4 +1,4 @@
-const { default: Signin } = require("../../components/Signin");
+import { SET_CURRENT_USER } from "../actionTypes";
 
 const INTIAL_STATE = {
   currentUser: {},
@@ -6,7 +6,7 @@ const INTIAL_STATE = {
 
 export const userReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
-    case "SET_CURRENT_USER":
+    case SET_CURRENT_USER:
       return { ...state, currentUser: action.payload };
 
     default:

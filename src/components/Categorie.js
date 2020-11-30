@@ -11,7 +11,6 @@ const Categorie = ({
   history,
   match,
 }) => {
-  console.log(match);
   return (
     <div
       className={`categorie_item  ${size} col `}
