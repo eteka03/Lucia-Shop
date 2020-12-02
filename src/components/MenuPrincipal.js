@@ -9,10 +9,13 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavbarText,
 } from "reactstrap";
 import { auth } from "../firebase/firebase.utils";
+import CartIcon from "./cart-icon";
+import { CartDropdown } from "./Cart-dropdown";
 
-const MenuPrincipal = ({ currentUser }) => {
+const MenuPrincipal = ({ currentUser, hidden }) => {
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
   const toggle = () => setIsOpen(!isOpen);
@@ -53,11 +56,16 @@ const MenuPrincipal = ({ currentUser }) => {
           </NavItem>
         </Nav>
       </Collapse>
+      <NavbarText>
+        <CartIcon />
+      </NavbarText>
+      {!hidden && <CartDropdown />}
     </Navbar>
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser: currentUser,
+  hidden: hidden,
 });
 export default connect(mapStateToProps, null)(MenuPrincipal);
