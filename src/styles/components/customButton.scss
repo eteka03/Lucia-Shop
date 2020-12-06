@@ -17,12 +17,24 @@ button {
   font-size: 18px;
   font-weight: 700;
   margin-top: 2rem;
+  cursor: pointer;
   &.googleSignIn {
     background-color: #4285f4;
     color: white;
 
     &:hover {
       background-color: #357ae8;
+    }
+  }
+
+  &.inverted {
+    background-color: rgba($color: #ffff, $alpha: 0.4);
+    color: #000000;
+    width: 100%;
+
+    &:hover {
+      color: #ffff;
+      background-color: #000000;
     }
   }
 }

@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { auth } from "../firebase/firebase.utils";
 import CartIcon from "./cart-icon";
-import { CartDropdown } from "./Cart-dropdown";
+import CartDropdown from "./Cart-dropdown";
 
 const MenuPrincipal = ({ currentUser, hidden }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,16 @@
 .collection {
   &_item {
     height: 350px;
+    margin-bottom: 15px;
+    position: relative;
+    .custom-button {
+      width: 75%;
+      position: absolute;
+      top: 60%;
+      left: 15%;
+      opacity: 0.7;
+      display: none;
+    }
     .image {
       height: 90%;
       width: 100%;
@@ -20,6 +30,15 @@
         width: 90%;
       }
     }
-    margin-bottom: 15px;
+
+    &:hover {
+      .image {
+        opacity: 0.85;
+      }
+      .custom-button {
+        opacity: 1;
+        display: inline-block;
+      }
+    }
   }
 }
