@@ -3,7 +3,6 @@ import CollectionItem from "./CollectionItem";
 import "../styles/components/Collection.scss";
 
 const Collection = ({ title, items }) => {
-  console.log(items);
   return (
     <div className="collection_container">
       <h2 className="title">{title}</h2>
