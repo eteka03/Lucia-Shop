@@ -34,7 +34,14 @@ const MenuPrincipal = ({ currentUser, hidden }) => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="" navbar>
           <NavItem className="menu_item">
-            <NavLink className="menu_link" href="/shop">
+            <NavLink
+              className="menu_link"
+              href="/shop"
+              onClick={(e) => {
+                e.preventDefault();
+                history.push("/shop");
+              }}
+            >
               Shop
             </NavLink>
           </NavItem>
@@ -51,7 +58,10 @@ const MenuPrincipal = ({ currentUser, hidden }) => {
             ) : (
               <NavLink
                 className="menu_link"
-                onClick={() => history.push("/signin")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push("/signin");
+                }}
               >
                 Sign in
               </NavLink>

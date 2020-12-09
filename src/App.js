@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import Accueil from "./pages/Accueil";
 import PageShop from "./pages/PageShop";
 import PageSignInSignUp from "./pages/PageSignInSignUp";
+import PageCheckout from "./pages/PageCheckout";
 import { connect } from "react-redux";
 import {
   auth,
@@ -58,6 +59,7 @@ function App({ setCurrentUser, currentUser }) {
             }
           />
           <Route path="/signout" component={Accueil} />
+          <Route path="/checkout" component={PageCheckout} />
         </Switch>
       </Layout>
     </Router>

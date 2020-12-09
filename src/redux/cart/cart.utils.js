@@ -1,3 +1,5 @@
+import CartItem from "../../components/Cart-item";
+
 export const addItemTocart = (cartItems, itemToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === itemToAdd.id
@@ -22,4 +24,44 @@ export const calculItemPrice = (price) => {
   });
 
   return formatter.format(price);
+};
+
+export const removeItemFromCart = (cartItems, item) => {
+  return cartItems.filter((cartItem) => cartItem.id !== item.id);
+};
+
+export const decreaseItemQuantity = (cartItems, item) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === item.id
+  );
+
+  if (existingCartItem) {
+    if (existingCartItem.quantity === 1) {
+      return cartItems.filter(
+        (cartItem) => cartItem.id !== existingCartItem.id
+      );
+    } else {
+      return cartItems.map((cartItem) =>
+        cartItem.id === existingCartItem.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      );
+    }
+  }
+};
+
+export const increaseItemQuantity = (cartItems, item) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === item.id
+  );
+
+  console.log(existingCartItem);
+
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === existingCartItem.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+  }
 };

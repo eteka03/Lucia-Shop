@@ -1,0 +1,40 @@
+.page {
+  &_checkout {
+    .product_listing {
+      padding-top: 50px;
+
+      table {
+        width: 70%;
+        margin: 0 auto;
+
+        img {
+          height: 120px;
+          width: 100px;
+        }
+        td {
+          vertical-align: middle;
+        }
+
+        th {
+          text-transform: capitalize;
+          border-top-style: none;
+          &:last-child {
+            width: 8%;
+          }
+        }
+      }
+
+      .total {
+        &.title {
+          text-transform: uppercase;
+          text-align: right;
+        }
+        &.price {
+          font-size: 18px;
+          color: #ff0000;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}
