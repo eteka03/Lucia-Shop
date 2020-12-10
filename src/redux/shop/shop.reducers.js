@@ -4,50 +4,50 @@ const initial_state = {
   sections: [
     {
       id: 1,
-      titre: "femme",
+      titre: "hats",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=1",
-      lienCategorie: "/",
-      lienUrl: "femme",
+
+      lienUrl: "shop/hats",
     },
     {
       id: 2,
-      titre: "homme",
+      titre: "men",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=2",
-      lienCategorie: "/",
+
       size: "small",
-      lienUrl: "homme",
+      lienUrl: "shop/men",
     },
     {
       id: 3,
-      titre: "enfant",
+      titre: "womens",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=3",
-      lienCategorie: "/",
+
       size: "small",
-      lienUrl: "enfant",
+      lienUrl: "shop/womens",
     },
     {
       id: 4,
-      titre: "chaussures",
+      titre: "sneakers",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=4",
-      lienCategorie: "/",
+
       size: "small",
-      lienUrl: "chaussure",
+      lienUrl: "shop/sneakers",
     },
     {
       id: 5,
-      titre: "Pantalons",
+      titre: "pants",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=5",
-      lienCategorie: "/",
+
       size: "medium",
-      lienUrl: "pantalons",
+      lienUrl: "shop/pants",
     },
     {
       id: 6,
-      titre: "Accessoires",
+      titre: "jackets",
       imageUrl: "https://source.unsplash.com/random/400x600?sig=6",
-      lienCategorie: "/",
+
       size: "medium",
-      lienUrl: "accessoires",
+      lienUrl: "shop/jackets",
     },
   ],
   collections: SHOP_DATA,

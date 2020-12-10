@@ -14,7 +14,7 @@ const Categorie = ({
   return (
     <div
       className={`categorie_item  ${size} col `}
-      onClick={() => history.push(`${match.url}/${lienUrl}`)}
+      onClick={() => history.push(`${lienUrl}`)}
     >
       <div
         style={{ backgroundImage: `url(${imageUrl}),url("./logo512.png")` }}

@@ -11,6 +11,7 @@ import {
   NavLink,
   NavbarText,
 } from "reactstrap";
+import logo from "../assets/images/logo-e-commerce.png";
 import { auth } from "../firebase/firebase.utils";
 import CartIcon from "./cart-icon";
 import CartDropdown from "./Cart-dropdown";
@@ -26,7 +27,7 @@ const MenuPrincipal = ({ currentUser, hidden }) => {
   return (
     <Navbar className="menuPrincipal" expand="md">
       <NavbarBrand className="logo" href="/">
-        <img src="./logo-e-commerce.png" width="32px" alt="logo" title="logo" />
+        <img src={logo} width="32px" alt="logo" title="logo" />
       </NavbarBrand>
 
       <NavbarToggler className="menu_burger_bouton" onClick={toggle} />
