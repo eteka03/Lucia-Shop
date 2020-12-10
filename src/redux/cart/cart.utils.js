@@ -1,5 +1,3 @@
-import CartItem from "../../components/Cart-item";
-
 export const addItemTocart = (cartItems, itemToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === itemToAdd.id

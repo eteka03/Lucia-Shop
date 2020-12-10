@@ -1,73 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import Categorie from "./Categorie";
+import { selectShopSections } from "../redux/shop/shop.selectors";
 
-const fakeCategorieData = [
-  {
-    id: 1,
-    titre: "femme",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=1",
-    lienCategorie: "/",
-    lienUrl: "femme",
-  },
-  {
-    id: 2,
-    titre: "homme",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=2",
-    lienCategorie: "/",
-    size: "small",
-    lienUrl: "homme",
-  },
-  {
-    id: 3,
-    titre: "enfant",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=3",
-    lienCategorie: "/",
-    size: "small",
-    lienUrl: "enfant",
-  },
-  {
-    id: 4,
-    titre: "chaussures",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=4",
-    lienCategorie: "/",
-    size: "small",
-    lienUrl: "chaussure",
-  },
-  {
-    id: 5,
-    titre: "Pantalons",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=5",
-    lienCategorie: "/",
-    size: "medium",
-    lienUrl: "pantalons",
-  },
-  {
-    id: 6,
-    titre: "Accessoires",
-    imageUrl: "https://source.unsplash.com/random/400x600?sig=6",
-    lienCategorie: "/",
-    size: "medium",
-    lienUrl: "accessoires",
-  },
-];
+const CategorieList = ({ sections }) => {
+  return (
+    <div className="categorie_container conteneur_large row">
+      {sections.map((cat) => (
+        <Categorie key={cat.id} {...cat} />
+      ))}
+    </div>
+  );
+};
 
-class CategorieList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      categories: fakeCategorieData,
-    };
-  }
+const mapStateToProps = createStructuredSelector({
+  sections: selectShopSections,
+});
 
-  render() {
-    return (
-      <div className="categorie_container conteneur_large row">
-        {this.state.categories.map((cat) => (
-          <Categorie key={cat.id} {...cat} />
-        ))}
-      </div>
-    );
-  }
-}
-
-export default CategorieList;
+export default connect(mapStateToProps, null)(CategorieList);
