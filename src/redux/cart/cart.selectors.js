@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-
+import { formatPrice } from "../../app.utils";
 const selectCart = (state) => state.cart;
 
 export const selectCartItems = createSelector(
@@ -21,10 +21,10 @@ export const selectCartItemsCount = createSelector(
     )
 );
 
-export const selectCarTotal = createSelector([selectCartItems], (cartItems) =>
-  cartItems.reduce(
+export const selectCarTotal = createSelector([selectCartItems], (cartItems) => {
+  return cartItems.reduce(
     (total_quantity, cartItem) =>
       total_quantity + cartItem.quantity * cartItem.price,
     0
-  )
-);
+  );
+});

@@ -4,3 +4,6 @@ export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const INCREASE_QUANTITY = "INCREASE_QUANTITY";
+export const INITIALIZE_STRIPE = "INITIALIZE_STRIPE";
+export const SET_ERROR = "SET_ERROR";
+export const SET_LOADING = "SET_LOADING";
