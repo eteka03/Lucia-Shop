@@ -18,6 +18,7 @@ import {
 import { setCurrentUser } from "./redux/user/user.action";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { PageSucessPayment } from "./pages/PageSucessPayment";
 
 function App({ setCurrentUser, currentUser }) {
   useEffect(() => {
@@ -60,6 +61,7 @@ function App({ setCurrentUser, currentUser }) {
           />
           <Route path="/signout" component={Accueil} />
           <Route path="/checkout" component={PageCheckout} />
+          <Route path="/sucess.html" component={PageSucessPayment} />
         </Switch>
       </Layout>
     </Router>
