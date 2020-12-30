@@ -1,21 +1,20 @@
 import React from "react";
 import CollectionItem from "./CollectionItem";
 import "../styles/components/Collection.scss";
+import { connect } from "react-redux";
 
-const Collection = ({ title, items }) => {
+const Collection = ({ collection }) => {
+  const { id, title, items } = collection;
+
   return (
-    <div className="collection_container">
+    <div key={id} className="collection_container">
       <h2 className="title">{title}</h2>
       <div className="collection_liste">
-        {items.map((item) => {
-          return (
-            <CollectionItem key={item.id} item={item}>
-              {item.name}
-            </CollectionItem>
-          );
-        })}
+        {items.map((item) => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );
 };
-export default Collection;
+export default connect()(Collection);

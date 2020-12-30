@@ -1,1 +1,5 @@
 [1214/093714.180:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1215/230608.626:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1216/230610.118:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1220/175806.110:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\eteka\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\338940bf-cd3d-43fd-8943-3cfb1a42c63a: Le chemin d’accès spécifié est introuvable. (0x3)
+[1220/175806.167:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)

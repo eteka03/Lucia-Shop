@@ -3,25 +3,24 @@ import { withRouter } from "react-router-dom";
 import "../styles/components/Categorie.scss";
 
 const Categorie = ({
-  titre,
+  title,
   imageUrl,
   size,
   lienCategorie,
-  lienUrl,
+  routeName,
   history,
-  match,
 }) => {
   return (
     <div
       className={`categorie_item  ${size} col `}
-      onClick={() => history.push(`${lienUrl}`)}
+      onClick={() => history.push(`shop/${routeName}`)}
     >
       <div
         style={{ backgroundImage: `url(${imageUrl}),url("./logo512.png")` }}
         className={`categorie_image `}
       />
       <div className="categorie_titre">
-        <h2 className="titre2">{titre}</h2>
+        <h2 className="titre2">{title}</h2>
         <a className="categorie lien" href={lienCategorie}>
           Shop Now
         </a>

@@ -13,7 +13,7 @@ const config = {
   measurementId: "G-B3323W3LWK",
 };
 
-firebase.initializeApp(config);
+!firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
@@ -50,5 +50,48 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 /**** signin avec google */
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export const addCollectionsndItems = (collections) => {
+  //creation des collections
+
+  collections.forEach((el) => {
+    const createdAt = new Date();
+    const { routeName, title, items } = el;
+    let newCollection = firestore.collection("collections");
+
+    newCollection
+      .add({
+        title,
+        routeName,
+        createdAt,
+      })
+      .then((docRef) => {
+        items.forEach(({ imageUrl, price, name }) => {
+          let newProduct = firestore.collection("products");
+
+          newProduct
+            .add({
+              name,
+              description: null,
+              price,
+              collectionId: docRef.id,
+              imageUrl,
+              quantityInStock: 0,
+            })
+            .then((prodId) => console.log("produit creer avec succès", prodId))
+            .catch((err) => console.log("erreur creation de produit", err));
+        });
+      })
+      .catch((error) => console.error("error adding document ", error));
+  });
+};
+
+/** fetch collections data ***/
+
+export const fetchCollections = async () => {
+  let collections = firestore.collection("collections");
+
+  return collections;
+};
 
 export default firebase;

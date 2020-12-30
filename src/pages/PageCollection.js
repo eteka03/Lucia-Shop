@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import CollectionItem from "../components/CollectionItem";
 import { selectCollection } from "../redux/shop/shop.selectors";
 import "../styles/pages/pageCollection.scss";
-
 const PageColletion = ({ match, collection }) => {
-  const { title, items } = collection;
-
   return (
-    <div className="page_collection conteneur_large container-fluid ">
-      <h2 className="title">{title}</h2>
-      <div className="items">
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-      </div>
-    </div>
+    <>
+      {collection ? (
+        <div className="page_collection conteneur_large container-fluid ">
+          <h2 className="title">{collection.title}</h2>
+          <div className="items">
+            {collection.items.map((item) => (
+              <CollectionItem key={item.id} item={item} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <h1>Loading ...</h1>
+      )}
+    </>
   );
 };
 

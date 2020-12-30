@@ -3,6 +3,7 @@ const SHOP_DATA = [
     id: 1,
     title: "Hats",
     routeName: "hats",
+    imageUrl: "https://source.unsplash.com/random/400x600?sig=1",
     items: [
       {
         id: 1,
@@ -64,6 +65,7 @@ const SHOP_DATA = [
     id: 2,
     title: "Sneakers",
     routeName: "sneakers",
+    imageUrl: "https://source.unsplash.com/random/400x600?sig=2",
     items: [
       {
         id: 10,

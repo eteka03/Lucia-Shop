@@ -10,17 +10,41 @@ import Accueil from "./pages/Accueil";
 import PageShop from "./pages/PageShop";
 import PageSignInSignUp from "./pages/PageSignInSignUp";
 import PageCheckout from "./pages/PageCheckout";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
+  addCollectionsndItems,
   auth,
+  firestore,
   createUserProfileDocument,
+  fetchCollections,
+  initializeFirebase,
 } from "../src/firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.action";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { PageSucessPayment } from "./pages/PageSucessPayment";
+import { selectShopCollections } from "./redux/shop/shop.selectors";
+import { setCollections } from "./redux/shop/shop.actions";
+import { SET_COLLECTIONS } from "./redux/actionTypes";
 
-function App({ setCurrentUser, currentUser }) {
+function App({ setCurrentUser, currentUser, collectionsData }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getCollections = firestore
+      .collection("collections")
+      .onSnapshot(async (querySnapshot) => {
+        let saveCollections = [];
+
+        querySnapshot.forEach((col) => saveCollections.push(col.data()));
+
+        dispatch({ type: SET_COLLECTIONS, payload: saveCollections });
+      });
+
+    return () => {
+      getCollections();
+    };
+  }, []);
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       //vérifier si il y'a un utilisateur authentifié
@@ -70,8 +94,10 @@ function App({ setCurrentUser, currentUser }) {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collectionsData: selectShopCollections,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  setCollections: (collections) => dispatch(setCollections(collections)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
